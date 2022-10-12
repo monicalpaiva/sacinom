@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, Image, View} from 'react-native';
+import { StyleSheet, Text, Image, View, TouchableOpacity} from 'react-native';
 
 import { FlatList } from 'react-native-gesture-handler';
 
-export default function conteudo() {
+export default function conteudo({navigation}) {
 const autores = [
     {
         id: 1,
@@ -45,10 +45,10 @@ const autores = [
 
 function renderItem({item}){
     return <View style={styles.conteudo}>
-        <View style={styles.NomeImagem}>
+        <TouchableOpacity style={styles.NomeImagem} onPress={() => navigation.navigate('Sumario')} >
             <Image source={item.src} style={styles.imagem}/>
             <Text>{item.nome}</Text>
-        </View>
+        </TouchableOpacity>
             <Text style={styles.descricao}>{item.descricao}</Text>
     </View>
 }

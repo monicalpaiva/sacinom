@@ -13,7 +13,7 @@ export default function HomeScreen({navigation}) {
       <StatusBar style="auto" />
       <Header navigation={navigation}/>
       <Navegacao />
-      <Conteudo />
+      <Conteudo navigation={navigation}/>
       <Rodape />
     </View>
   );
