@@ -18,11 +18,13 @@ export default function conteudo({navigation}) {
 
 function renderItem({item}){
     return <View style={styles.conteudo}>
-         <TouchableOpacity style={styles.NomeImagem} onPress={() => navigation.navigate('Sumario')} >
-            <Image source={{uri: item.src}} style={styles.imagem}/>
-            <Text>{item.nome}</Text>
-          </TouchableOpacity>
-            <Text style={styles.descricao}>{item.descricao}</Text>
+      <View style={styles.conjunto}>
+        <TouchableOpacity style={styles.NomeImagem} onPress={() => navigation.navigate('Sumario')} >
+          <Image source={{uri: item.src}} style={styles.imagem}/>
+          <Text>{item.nome}</Text>
+        </TouchableOpacity>
+        <Text style={styles.descricao}>{item.descricao}</Text>
+      </View>
     </View>
 }
 
@@ -45,9 +47,13 @@ const styles = StyleSheet.create({
     alignContent:'space-between',
     justifyContent: 'space-between',
   },
+  conjunto:{
+    padding: 10,
+    flexDirection: 'row',
+  },
   imagem:{
-    height: 50,
-    width: 50,
+    height: 100,
+    width: 100,
   },
   descricao:{
     textAlign: 'justify',  
@@ -55,12 +61,7 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   NomeImagem:{
-    flexDirection:'row',
-    alignContent:'space-between',
-    justifyContent: 'space-between',
-    backgroundColor: '#f0e68c' ,  
-    padding:10, 
+    backgroundColor: '#6495ed' , 
+    alignItems: 'center',
   }
 });
-
-
