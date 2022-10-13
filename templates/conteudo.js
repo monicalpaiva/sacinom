@@ -19,7 +19,7 @@ export default function conteudo({navigation}) {
 function renderItem({item}){
     return <View style={styles.conteudo}>
          <TouchableOpacity style={styles.NomeImagem} onPress={() => navigation.navigate('Sumario')} >
-            <Image source={item.src} style={styles.imagem}/>
+            <Image source={{uri: item.src}} style={styles.imagem}/>
             <Text>{item.nome}</Text>
           </TouchableOpacity>
             <Text style={styles.descricao}>{item.descricao}</Text>
