@@ -50,9 +50,10 @@ const styles = StyleSheet.create({
   conjunto:{
     padding: 10,
     flexDirection: 'row',
+    alignItems: 'center',
   },
   imagem:{
-    height: 100,
+    height: '80%',
     width: 100,
   },
   descricao:{

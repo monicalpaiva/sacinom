@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
-import { StyleSheet, Text, Image, View, TouchableOpacity} from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View} from 'react-native';
+import Rodape from '../templates/rodape';
 
-import { FlatList } from 'react-native-gesture-handler';
 
 export default function Sumario() {
     return <View style={styles.conteudo}>
@@ -10,6 +10,7 @@ export default function Sumario() {
         <Text>Na manhã de domingo</Text>
         <Text>Ao Luar da meia noite</Text>
         </View>
+        <Rodape />
       </View>
 } 
 const styles = StyleSheet.create({
@@ -17,6 +18,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 5,
     backgroundColor: '#fafad2',
+    justifyContent: 'space-between',
   },
   nomeautor:{
     justifyContent: 'center',

@@ -1,19 +1,26 @@
 import React from "react";
 import { View, Text,StyleSheet } from "react-native";
+import {FontAwesome5} from '@expo/vector-icons';
+import Rodape from '../templates/rodape';
 
-import Pesquisa from '../templates/pesquisa';
 
 export default function SearchScreen(){
-    return(
-        <View style={styles.container}>
-            <Text>Aqui vai ser a parte de pesquisa</Text>
-        </View>
-    )
-}
-
+    return <View style={styles.conteudo}>
+        <View style={styles.conjuntoPesquisa}>
+    <Text>Pesquisa por autor</Text>
+    <FontAwesome5 name="search" size={24} color="black"/>
+    </View>
+    <Rodape />
+  </View>
+} 
 const styles = StyleSheet.create({
-    container:{
-      flex: 1,
-    }
-  });
-  
+conteudo:{
+    flex:1,
+    backgroundColor: '#90ee90',
+    justifyContent: 'space-between',
+},
+conjuntoPesquisa:{
+    flexDirection: 'row',
+    alignItems: 'center',
+}
+});

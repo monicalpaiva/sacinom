@@ -4,7 +4,8 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
       <View style={styles.rodape}>
-        <Text>By Monica Lima de Paiva</Text>
+        <Text>App para desenvolvimento de dispositivos móveis</Text>
+        <Text>UFRN</Text>
       </View>
   );
 }
