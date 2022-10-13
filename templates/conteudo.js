@@ -57,7 +57,6 @@ const styles = StyleSheet.create({
   },
   descricao:{
     textAlign: 'justify',  
-    letterSpacing: 3,
     padding: 5,
   },
   NomeImagem:{

@@ -1,34 +1,31 @@
-import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import { StyleSheet, Text, Image, View, TouchableOpacity} from 'react-native';
+
+import { FlatList } from 'react-native-gesture-handler';
 
 export default function Sumario() {
-  return (
-    <View style={styles.conteudo}>
-      <View  style={styles.conteudoCentral}>
-        <Text> Nome do autor</Text>
-        <Text> Imagem do autor</Text>
+    return <View style={styles.conteudo}>
+        <View style={styles.poemas}>
+        <Text>POEMAS</Text>
+        <Text>Na manhã de domingo</Text>
+        <Text>Ao Luar da meia noite</Text>
+        </View>
       </View>
-      <View style={styles.conteudoSobre}>
-        <Text>Descrição do autor</Text>
-        <Text>Links com os títulos para as produções do autor</Text>
-      </View>
-    </View>
-  )
-}
-
+} 
 const styles = StyleSheet.create({
   conteudo:{
     flex: 1,
-    height:100,
-    padding:5,
+    padding: 5,
     backgroundColor: '#fafad2',
   },
-  conteudoCentral:{
-    alignItems: 'center',
+  nomeautor:{
+    justifyContent: 'center',
+    alignContent: 'center',
   },
-  conteudoSobre:{
-    height:100,
-    padding:5,
-    alignItems: 'flex-start',
+  poemas:{
+    padding: 10,
+    margin: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
   }
 });
