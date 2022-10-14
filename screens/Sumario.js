@@ -9,8 +9,9 @@ export default function Sumario() {
         <Text>POEMAS</Text>
         <Text>Na manhã de domingo</Text>
         <Text>Ao Luar da meia noite</Text>
+        <Text>Muitos poemas sobre nós</Text>
         </View>
-        <Rodape />
+        <Rodape/>
       </View>
 } 
 const styles = StyleSheet.create({
