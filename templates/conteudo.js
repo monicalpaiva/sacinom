@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
   descricao:{
     textAlign: 'justify',  
     padding: 5,
+    width: '75%',
   },
   NomeImagem:{
     backgroundColor: '#6495ed' , 
