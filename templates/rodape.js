@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
       <View style={styles.rodape}>
-        <Text>App para desenvolvimento de dispositivos móveis</Text>
+        <Text>Ciência & Tecnologia</Text>
         <Text>UFRN</Text>
       </View>
   );

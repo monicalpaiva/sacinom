@@ -15,7 +15,7 @@ export default function conteudo({navigation}) {
     }
     getData();
   }, [])
-
+ 
 function renderItem({item}){
     return <View style={styles.conteudo}>
       <View style={styles.conjunto}>
