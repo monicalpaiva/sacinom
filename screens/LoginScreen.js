@@ -1,23 +1,60 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, View, TextInput, TouchableOpacity, Text } from 'react-native';
+import {useState} from "react";
+import { StyleSheet, TextInput, TouchableOpacity, View, Text, Alert } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function LoginScreen({navigation}) {
+  const [user, setUser] = useState('');
+  const [password, setPassword] = useState('');
+
+  async function logar(){
+    const json = {
+      user,
+      password,
+    };
+
+    const headerOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(json),
+    };
+    const response = await fetch('https://mobile.ect.ufrn.br:3000/login', headerOptions);
+    if(response.status === 200){
+      const token = await response.text();
+      await AsyncStorage.setItem('token',token);
+      console.long('TOKEN: ' + token);
+      navigation.navigate('HomeScreen');
+    } else {
+      Alert.alert(
+        'Erro',
+        'Usuário ou senha invállido',
+      );
+    }
+  }
+
+
   return (
     <View style={styles.container}>
         <StatusBar style="auto" />
         <View style={styles.loginContent}>
             <TextInput 
                 style={styles.InputContent} 
-                placeholder="Usuário..."/>
+                placeholder="Usuário..."
+                value={user} 
+                onChangeText={setUser}/>
             <TextInput 
                 style={styles.InputContent} 
                 placeholder="Senha..." 
+                value={password}
+                onChangeText={setPassword}
                 secureTextEntry = {true}/>
         </View>
         <View style={styles.botoesLogCad}>
             <TouchableOpacity 
-            style={styles.sendButton}>
+            style={styles.sendButton}
+            onPress={() => logar()}>
             <Text>Login</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.sendButton}>
