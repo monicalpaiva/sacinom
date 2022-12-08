@@ -1,68 +1,65 @@
-import React, {useEffect, useState} from 'react';
-import { StyleSheet, Text, Image, View, TouchableOpacity} from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 
-import { FlatList } from 'react-native-gesture-handler';
-
-export default function conteudo({navigation}) {
-  const [autores, setAutores] = useState([]);
-
-  useEffect(function(){
-    async function getData(){
-      const response = await fetch('https://raw.githubusercontent.com/monicalpaiva/sacinomapi/main/autores.json');
-      const autoresServidor = await response.json();
-      //console.log(autores);
-      setAutores(autoresServidor)
-    }
-    getData();
-  }, [])
- 
-function renderItem({item}){
-    return <View style={styles.conteudo}>
-      <View style={styles.conjunto}>
-        <TouchableOpacity style={styles.NomeImagem} onPress={() => navigation.navigate('Sumario')} >
-          <Image source={{uri: item.src}} style={styles.imagem}/>
-          <Text>{item.nome}</Text>
-        </TouchableOpacity>
-        <Text style={styles.descricao}>{item.descricao}</Text>
-      </View>
-    </View>
-}
+export default function LoginScreen({navigation}) {
 
   return (
-    <View style={styles.conteudo}>
-        <FlatList
-            data={autores}
-            renderItem={renderItem}
-            keyExtractor={item => item.id}
-            showsVerticalScrollIndicator={false}
-        />
+    <View style={styles.container}>
+        <StatusBar style="auto" />
+        <View style={styles.botoesLogCad}>
+            <TouchableOpacity 
+              style={styles.sendButton}
+              onPress={() => navigation.navigate('Leitura')}>
+              <Text>LER</Text>
+            </TouchableOpacity>
+            <TouchableOpacity 
+              style={styles.sendButton}
+              onPress={() => navigation.navigate('Escrita')}>
+              <Text>ESCREVER</Text>
+            </TouchableOpacity>
+        </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  conteudo: {
+  container: {
     flex: 1,
-    backgroundColor: '#fafad2',
-    alignContent:'space-between',
-    justifyContent: 'space-between',
+    backgroundColor: '#696969',
+    justifyContent: 'center',
   },
-  conjunto:{
-    padding: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
+  loginContent:{
+    justifyContent: 'center',
+    margin: 20,
+    padding:40, 
+    borderColor: '#fffaf0',
+    borderWidth: 1,
+    backgroundColor: '#fffaf0',
+    borderRadius: 10,
   },
-  imagem:{
-    height: '80%',
-    width: 100,
+  InputContent:{
+    height: 40,
+    marginTop:20,
+    borderWidth: 1,
+    borderColor: 'none',
+    borderRadius: 10,
+    //backgroundColor: '#fff8dc',
+    paddingLeft: 10,
   },
-  descricao:{
-    textAlign: 'justify',  
-    padding: 5,
-    width: '75%',
+  sendButton:{
+    padding:10,
+    with: 120,
+    backgroundColor: '#00ced1',
+    alingItens: 'center',
+    justifyContent: 'center',
+    borderRadius: 10,
+    margin: 20,
+    alignTop: 20,
+    alignSelf: 'center',
   },
-  NomeImagem:{
-    backgroundColor: '#6495ed' , 
-    alignItems: 'center',
+  botoesLogCad:{
+    flexDirection: "row",
+    alingItens: 'center',
+    justifyContent: 'center',
   }
 });
