@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 import { StatusBar } from 'expo-status-bar';
-import { ActivityIndicator, TouchableOpacity, StyleSheet, FlatList, View, Text, TextInput } from 'react-native';
+import { ActivityIndicator, StyleSheet, FlatList, View, Text } from 'react-native';
 import Constants from 'expo-constants';
 import { useEffect } from 'react';
 
 import { db, collection, getDocs, addDoc  } from './firebase';
 
 import uuid from 'react-native-uuid';
-
-export default function App() {
+ 
+export default function LeituraScreen(){
   const [text, setText] = React.useState('');
   const [poeminhas, setpoeminhas] = React.useState([]);
   const [showLoader, setShowLoader] = React.useState(false);
@@ -52,14 +52,12 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <View style={styles.inputcontainer}>
-        <TextInput style={styles.input} onChangeText={setText} value={text} />
-        <TouchableOpacity
-          style={styles.button}
-          onPress={saveItem}>
-          <Text>Add</Text>
-        </TouchableOpacity>
-      </View>
+      <ActivityIndicator animating={showLoader}/>
+      <FlatList
+        data={poeminhas}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+      />
     </View>
   );
 }

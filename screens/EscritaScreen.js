@@ -8,7 +8,7 @@ import { db, collection, getDocs, addDoc  } from './firebase';
 
 import uuid from 'react-native-uuid';
 
-export default function App() {
+export default function EscritaScreen() {
   const [text, setText] = React.useState('');
   const [poeminhas, setpoeminhas] = React.useState([]);
   const [showLoader, setShowLoader] = React.useState(false);
@@ -52,12 +52,14 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <ActivityIndicator animating={showLoader}/>
-      <FlatList
-        data={poeminhas}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-      />
+      <View style={styles.inputcontainer}>
+        <TextInput style={styles.input} onChangeText={setText} value={text} />
+        <TouchableOpacity
+          style={styles.button}
+          onPress={saveItem}>
+          <Text>Add</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }

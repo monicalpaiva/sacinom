@@ -1,7 +1,8 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 
-export default function LoginScreen({navigation}) {
+export default function conteudo({navigation}) {
 
   return (
     <View style={styles.container}>
@@ -9,12 +10,12 @@ export default function LoginScreen({navigation}) {
         <View style={styles.botoesLogCad}>
             <TouchableOpacity 
               style={styles.sendButton}
-              onPress={() => navigation.navigate('Leitura')}>
+              onPress={() => navigation.navigate("LeituraScreen")}>
               <Text>LER</Text>
             </TouchableOpacity>
             <TouchableOpacity 
               style={styles.sendButton}
-              onPress={() => navigation.navigate('Escrita')}>
+              onPress={() => navigation.navigate('EscritaScreen')}>
               <Text>ESCREVER</Text>
             </TouchableOpacity>
         </View>
