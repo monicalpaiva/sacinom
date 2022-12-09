@@ -4,11 +4,14 @@ import { ActivityIndicator, TouchableOpacity, StyleSheet, FlatList, View, Text, 
 import Constants from 'expo-constants';
 import { useEffect } from 'react';
 
+import Header from './templates/header';
+import Rodape from './templates/rodape';
+
 import { db, collection, getDocs, addDoc  } from './firebase';
 
 import uuid from 'react-native-uuid';
 
-export default function EscritaScreen() {
+export default function EscritaScreen({navigation}) {
   const [text, setText] = React.useState('');
   const [poeminhas, setpoeminhas] = React.useState([]);
   const [showLoader, setShowLoader] = React.useState(false);
@@ -52,30 +55,33 @@ export default function EscritaScreen() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
+      <Header navigation={navigation}/>
+      <StatusBar style="auto" />
       <View style={styles.inputcontainer}>
-        <TextInput style={styles.input} onChangeText={setText} value={text} />
-        <TouchableOpacity
-          style={styles.button}
-          onPress={saveItem}>
-          <Text>Add</Text>
-        </TouchableOpacity>
-      </View>
+          <TextInput style={styles.input} onChangeText={setText} value={text} />
+          <TouchableOpacity
+            style={styles.sendButton}
+            onPress={saveItem}>
+            <Text>Escreva um poeminha</Text>
+          </TouchableOpacity>
+      </View>  
+      <Rodape />
     </View>
+    
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#696969',
     marginTop: Constants.statusBarHeight,
-    margin: 10,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
   },
   inputcontainer: {
     flexDirection: 'row',
     width: '100%',
+    justifyContent: 'space-between',
   },
   input: {
     flex: 1,
@@ -84,10 +90,16 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
   },
-  button: {
-    alignItems: "center",
-    justifyContent: 'center',
-    backgroundColor: "#DDDDDD",
-    padding: 10,
+  sendButton:{
+    padding:10,
+    with: 120,
+    backgroundColor: '#00ced1',
+    alingItens: 'left',
+    justifyContent: 'flex-end',
+    borderRadius: 10,
+    margin: 20,
+    alignTop: 20,
+    alignSelf: 'center',
+    flexDirection: 'row',
   },
 });

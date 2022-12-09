@@ -1,14 +1,17 @@
-import React from "react";
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { ActivityIndicator, StyleSheet, FlatList, View, Text } from 'react-native';
 import Constants from 'expo-constants';
 import { useEffect } from 'react';
 
+import Header from './templates/header';
+import Rodape from './templates/rodape';
+
 import { db, collection, getDocs, addDoc  } from './firebase';
 
 import uuid from 'react-native-uuid';
- 
-export default function LeituraScreen(){
+
+export default function LeituraScreen({navigation}) {
   const [text, setText] = React.useState('');
   const [poeminhas, setpoeminhas] = React.useState([]);
   const [showLoader, setShowLoader] = React.useState(false);
@@ -52,12 +55,15 @@ export default function LeituraScreen(){
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
+      <Header navigation={navigation}/>
       <ActivityIndicator animating={showLoader}/>
       <FlatList
+        style={styles.text}
         data={poeminhas}
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />
+      <Rodape />
     </View>
   );
 }
@@ -65,27 +71,11 @@ export default function LeituraScreen(){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#696969',
     marginTop: Constants.statusBarHeight,
-    margin: 10,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
   },
-  inputcontainer: {
-    flexDirection: 'row',
-    width: '100%',
-  },
-  input: {
-    flex: 1,
-    height: 40,
+  text:{
     margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  },
-  button: {
-    alignItems: "center",
-    justifyContent: 'center',
-    backgroundColor: "#DDDDDD",
-    padding: 10,
-  },
+  }
 });
